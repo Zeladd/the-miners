@@ -34,13 +34,10 @@ updateHp();
 
 //creating event listener to click on the ore and dealing damage to the ore
 oresCanvas.addEventListener("mousedown", () => {
-    //checking if I can deal damage
-    if(ore.getHp > 1) {
-        ore.hit(damage);
-        updateHp();
-        //getting loot
-    } else if(ore.getHp == 1 && inventory.length < inventorySlots.length) {
-        ore.hit(damage);
+    ore.hit(damage);
+    updateHp();
+    //getting loot
+    if(ore.getHp < 1 && inventory.length < inventorySlots.length) {
         //checking slots avalabile
         let slot;
         for(let i = 0; i < inventorySlots.length; i++) {
